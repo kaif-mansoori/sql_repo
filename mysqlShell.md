@@ -111,4 +111,16 @@ SELECT customer_id, SUM(amount)
 FROM orders
 GROUP BY customer_id;
 
-15) 
+15) Real job mein kya hota hai:
+Koi bhi business dashboard jo tumne dekha hai — "Total sales this month", "Orders per city", "Average order value" — ye sab GROUP BY se banta hai.
+Data Analyst ki job ka 60% kaam sirf yahi hota hai:
+
+"Is cheez ko us cheez ke hisaab se group karo aur kuch calculate karo"
+
+Real scenarios:
+
+Finance team: "Har month ka total revenue kya tha?"
+Marketing team: "Har city mein kitne customers hain?"
+Product team: "Sabse zyada bikne wala product kaunsa hai?"
+
+16) 
