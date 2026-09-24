@@ -104,4 +104,31 @@ SELECT + WHERE + AND/OR + LIKE + BETWEEN
 ## Real Office Situation:
 Tumhara manager subah bolta hai — "Aaj sirf completed high-value orders check karne hain, aur kuch customers ka naam search karna hai jinki complaint aayi hai." Ye sabse basic daily task hai — filtering.
 
-Query 1 — AND ka use (dono condition true honi chahiye):
+## Query 1 — AND ka use (dono condition true honi chahiye):
+SELECT * FROM orders
+WHERE status = 'Completed' AND amount > 10000;
+
+Expected Output:
+order_id	customer_name	order_date	amount	    status
+1	        Rahul Sharma	2024-01-05	15000.00	Completed
+3	        Amit Verma	    2024-01-10	22000.00	Completed
+5	        Rohit Kumar	    2024-01-15	12000.00	Completed
+9	        Suresh Rao	    2024-01-25	45000.00	Completed
+
+## Query 2 — OR ka use (koi bhi ek condition true ho):
+SELECT * FROM orders
+WHERE status = 'Pending' OR status = 'Cancelled';
+
+Ye tumhe wo saare orders dega jo abhi complete nahi hue — support engineer ke liye "action needed" list.
+
+## Query 3 — LIKE ka use (pattern search):
+SELECT * FROM orders
+WHERE customer_name LIKE 'S%';
+
+S% matlab jo naam 'S' se start ho (Sneha, Suresh, Sanjay type). Client agar bole "customer ka naam S se start hota hai but exact spelling yaad nahi" — ye tab kaam aata hai.
+
+## Query 4 — BETWEEN ka use (range check):
+SELECT * FROM orders
+WHERE amount BETWEEN 5000 AND 10000;
+
+Range-based reports ke liye ye bahut common hai — "5000 se 10000 tak ke saare orders dikhao."
